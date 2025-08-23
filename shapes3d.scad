@@ -3390,8 +3390,8 @@ function _make_octa_sphere(r) =
             ) [
             for (u = [0:1:ll]) [
                 for (v = [0:1:u])
-                let(c = u-v, r = ll-v)
-                tri[r][c]
+                let(col = u-v, row = ll-v)
+                tri[row][col]
             ]
         ],
         pts2b = rot_tri(rot_tri(pts2)),
@@ -3404,7 +3404,7 @@ function _make_octa_sphere(r) =
                     p2 = pts2b[u][v],
                     p3 = pts3b[u][v],
                     mean = (p1 + p2 + p3) / 3
-                ) mean
+                ) unit(mean) * r
             ]
         ],
         octant_vnf = vnf_tri_array(pts),
